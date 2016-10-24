@@ -1,0 +1,31 @@
+find . -name "*.jar" -delete
+find . -name "*.class" -delete
+
+for m in commons-compiler commons-compiler-jdk janino
+do
+    mkdir -p ${m}/src
+    (
+        cd ${m}/src/
+        unzip -qq  ../../${m}-src.zip
+        if [ -f org.codehaus.commons.compiler.properties ]; then
+            mkdir -p main/resources
+            mv org.codehaus.commons.compiler.properties main/resources
+        fi
+    )
+done
+
+%patch0 -p1
+
+python3 /usr/share/java-utils/pom_editor.py pom_change_dep    -r :ant-nodeps :ant
+
+
+# RHBZ#842604
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_set "pom:plugin[pom:artifactId = 'maven-compiler-plugin']/pom:configuration/pom:source" 1.60
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_set "pom:plugin[pom:artifactId = 'maven-compiler-plugin']/pom:configuration/pom:target" 1.6
+
+# Cannot run program "svn"
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin :buildnumber-maven-plugin
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin :maven-clean-plugin
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin :maven-deploy-plugin
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin :maven-site-plugin
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin :maven-source-plugin
