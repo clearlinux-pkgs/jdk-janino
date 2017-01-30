@@ -1,6 +1,6 @@
 Name     : jdk-janino
 Version  : 2.7.8
-Release  : 1
+Release  : 2
 URL      : http://janino.unkrig.de/download/janino-2.7.8.zip
 Source0  : http://janino.unkrig.de/download/janino-2.7.8.zip
 Source1  : http://repo1.maven.org/maven2/org/codehaus/janino/janino-parent/2.7.8/janino-parent-2.7.8.pom
