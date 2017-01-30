@@ -12,11 +12,11 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 BuildRequires : apache-ant
 BuildRequires : apache-maven
-BuildRequires : apache-maven
 BuildRequires : apache-maven2
 BuildRequires : javapackages-tools
 BuildRequires : jdk-aether
 BuildRequires : jdk-aopalliance
+BuildRequires : jdk-apache-parent
 BuildRequires : jdk-atinject
 BuildRequires : jdk-bsh
 BuildRequires : jdk-cdi-api
@@ -29,6 +29,7 @@ BuildRequires : jdk-commons-io
 BuildRequires : jdk-commons-lang
 BuildRequires : jdk-commons-lang3
 BuildRequires : jdk-commons-logging
+BuildRequires : jdk-commons-parent
 BuildRequires : jdk-doxia
 BuildRequires : jdk-doxia-sitetools
 BuildRequires : jdk-enforcer
